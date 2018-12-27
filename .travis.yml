@@ -1,0 +1,38 @@
+language: python
+
+cache: pip
+
+python:
+- '3.5'
+- '3.6'
+- nightly
+
+matrix:
+  allow_failures:
+  - python: nightly
+
+before_install:
+- sudo apt-get update
+- sudo apt-get install pandoc -y
+- pip install pipenv codecov
+
+install:
+- pipenv install --dev
+
+script:
+- pipenv run make lint
+- pipenv run make test
+
+deploy:
+  provider: pypi
+  user: stegben
+  password:
+    secure: ZJ9svGK/Eu2AKYoxBjQ3CRrn2jaYmkXwuh6PKuwmbfKpueYEpvOoJGvdI+I7qibvVA2luWApQJE4ZADjXfL8zU31FsYf7CCsrffE8em7optC9L0d7lBNDF64Gq2wi6KPlDJHaAcj2mdCjB0WSc2jwM/q/fMcdX5C7JFDnL6HGor7NUtUP8e0xShjh2BkRPSoa3362MmIxVPqhLAJ2BYAd9sGE3/7Z/4gXkrGUhp6Zy2Nxobbap0I1RFk9VJFxmowd1K5VuHcXGZGCY1zthGycyOn5RPjTi7OyFdNHpHo6qhGBdDeG4Lmzhc+FbqH+DlYWCF06GuJ48fiozSuFGXXx0CKvd9NufYEg4Rg9wvsOF5e1596u2+1FvHs20mwr1I0HWbTfjaOklbZtIH1KTZ0mXTfhUdzurraKDoUaGGMUk+QLgp4r6FkDkKPzqU7LUCM/e2UAWJnY45ZevDGd1BQbTTXK410ICH5WfHYq+HiIoiiYRHQfAwuU06w3aI1sra0rySC889gmQuLIouS35+LZQDyixW+XUmoM3QPzu/ETvET+c1vq4nbyvIKZI9Vk2oZuxkeVUtDGnVR+IX3gpLDwLclwWswSdaG64EYhm9VWEObzlNZhwi2O/3HqOig4diZGJ57vZ/cgzwSglnIVc1jVKZ/LASFiEDRS9ykeF+v6Dc=
+  on:
+    tags: true
+    distributions: sdist bdist_wheel
+    repo: stegben/bottender-py
+    python: 3.6
+
+after_success:
+- codecov
