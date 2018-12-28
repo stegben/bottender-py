@@ -4,7 +4,7 @@ import abc
 class Connector(abc.ABC):
 
     @abc.abstractmethod
-    def map_request_to_contexts(self, body):
+    def map_request_to_events(self, body):
         pass
 
     @abc.abstractmethod
