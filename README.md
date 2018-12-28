@@ -5,8 +5,8 @@
 [travis-image]: https://travis-ci.org/stegben/bottender-py.svg?branch=master
 [travis-url]: https://travis-ci.org/stegben/bottender-py
 
-[pypi-image]: https://badge.fury.io/py/bottender-py.svg
-[pypi-url]: https://badge.fury.io/py/bottender-py
+[pypi-image]: https://badge.fury.io/py/bottender.svg
+[pypi-url]: https://badge.fury.io/py/bottender
 
 [codecov-image]: https://codecov.io/gh/stegben/bottender-py/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/stegben/bottender-py
